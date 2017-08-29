@@ -776,23 +776,33 @@ class unosst_frame(wx.Frame):
         else:
             c.execute("SELECT Id FROM Kolegiji WHERE Naziv = ?", (self.kolText.GetValue(),))
             rows_k = c.fetchall()
+            print rows_k
 
-            c.execute("INSERT INTO Studenti VALUES(NULL,?,?,?)",
-                      (self.godinaText.GetValue(), self.jmbagText.GetValue(), self.imeText.GetValue()))
-            conn.commit()
+            if len(rows_k) == 0:
+                message = wx.MessageDialog(self, u"Nepostojeći kolegij!", style=wx.OK | wx.CANCEL)
+                res = message.ShowModal()
+                message.Destroy()
+                self.kolText.SetValue("")
 
-            c.execute("SELECT Id FROM Studenti WHERE jmbag = ?", (self.jmbagText.GetValue(),))
-            rows_s = c.fetchall()
+            else:
 
-            c.execute("INSERT INTO st_kolegiji VALUES(NULL,?,?)", (unicode(rows_s[0][0]), unicode(rows_k[0][0])))
-            conn.commit()
+                c.execute("INSERT INTO Studenti VALUES(NULL,?,?,?)",
+                          (self.godinaText.GetValue(), self.jmbagText.GetValue(), self.imeText.GetValue()))
+                conn.commit()
 
-            message = wx.MessageDialog(self, u"Uspješno unešeno", style=wx.OK)
-            res = message.ShowModal()
+                c.execute("SELECT Id FROM Studenti WHERE jmbag = ?", (self.jmbagText.GetValue(),))
+                rows_s = c.fetchall()
 
-            self.godinaText.SetValue("")
-            self.jmbagText.SetValue("")
-            self.imeText.SetValue("")
+                c.execute("INSERT INTO st_kolegiji VALUES(NULL,?,?)", (unicode(rows_s[0][0]), unicode(rows_k[0][0])))
+                conn.commit()
+
+                message = wx.MessageDialog(self, u"Uspješno unešeno", style=wx.OK)
+                res = message.ShowModal()
+
+                self.godinaText.SetValue("")
+                self.jmbagText.SetValue("")
+                self.imeText.SetValue("")
+                self.kolText.SetValue("")
 
         self.GetParent().grd.PuniPodatkeStudenti()
 
