@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 
-# finalna verzija sa funkcionalnim slanjem maila, završiti help prozoze, qr code
-# ispraviti error kod unosa studenata, ako se unose student za kolegij koji nije noveden u tabu kolegiji, treba javiti
-# error da ne postoji kolegij te da ga treba unijeti
+# verzija sa slanjem maila, završiti help prozoze, qr code
+# ispraviti error kod unosa studenata, ako se unose student za kolegij koji nije unesen u tablicu kolegiji, treba javiti
+# error da ne postoji kolegij (778, rows_k provjera)
 
 import wx
 import wx.grid
