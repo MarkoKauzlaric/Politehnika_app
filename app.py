@@ -1,8 +1,12 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+
+# -*- coding: utf-8 -*-#
 
 
 # verzija sa slanjem maila, završiti help prozoze, qr code
+'''
+KB 30.08.2017.:
+    * testirano je slanje maila iz aplikacije i radi dobro
+'''
 
 
 import wx
@@ -479,7 +483,7 @@ class tab_unos(wx.Panel):
         else:
             frame = izmjkol_frame(self)
             frame.Show()
-
+        self.grd.PuniPodatke()
 
 class tab_evid(wx.Panel):
     def __init__(self, parent):
