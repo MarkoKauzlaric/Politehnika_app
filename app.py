@@ -3,6 +3,7 @@
 
 
 # verzija sa slanjem maila, završiti help prozoze, qr code
+# KB 31.08.2017. novi komentar :)
 
 
 import wx
