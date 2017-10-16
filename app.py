@@ -952,6 +952,7 @@ class izmjkol_frame(wx.Frame):
         self.GetParent().grd.PuniPodatke()
 
     def odustani(self, event):
+        del unos_lista[:]
         self.Close(True)
 
 
@@ -1021,6 +1022,7 @@ class izmjst_frame(wx.Frame):
         self.GetParent().grd.PuniPodatkeStudenti()
 
     def odustani(self, event):
+        del unos_lista[:]
         self.Close(True)
 
 
