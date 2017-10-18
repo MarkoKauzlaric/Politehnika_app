@@ -13,7 +13,8 @@ MK 17.10.2017.:
 '''
 '''
 MK 18.10.2017.:
-    * na tabu "Politehnika" u polju "Profesor" prikazuje se nul-ti element login_liste (ime trenutno ulogiranog profesora)
+    * na tabu "Politehnika" u polju "Profesor" prikazuje se nul-ti element login_liste (ime trenutno ulogiranog profesora),
+    nakon krivog unosa šifre kod ulogiravanja, polje se prazni
 '''
 
 
@@ -1217,6 +1218,7 @@ class login(wx.Frame):
                 message = wx.MessageDialog(self, u"Nepostojeći profesor!", style=wx.OK | wx.CANCEL)
                 res = message.ShowModal()
                 message.Destroy()
+                self.sifraText.SetValue("")
 
             else:
                 login_lista.append(rows_s)
