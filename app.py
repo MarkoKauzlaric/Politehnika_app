@@ -8,9 +8,14 @@ KB 30.08.2017.:
     * testirano je slanje maila iz aplikacije i radi dobro
 '''
 '''
-MK 10.17.2017.:
+MK 17.10.2017.:
     * riješen bug sa 'unos_lista' kod izmjene kolegija, pritiskom na 'odustani' brišu se elementi Liste
 '''
+'''
+MK 18.10.2017.:
+    * na tabu "Politehnika" u polju "Profesor" prikazuje se nul-ti element login_liste (ime trenutno ulogiranog profesora)
+'''
+
 
 import wx
 import wx.grid
