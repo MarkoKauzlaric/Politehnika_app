@@ -7,7 +7,10 @@
 KB 30.08.2017.:
     * testirano je slanje maila iz aplikacije i radi dobro
 '''
-
+'''
+MK 10.17.2017.:
+    * riješen bug sa 'unos_lista' kod izmjene kolegija, pritiskom na 'odustani' brišu se elementi Liste
+'''
 
 import wx
 import wx.grid
@@ -688,7 +691,10 @@ class tab_poli(wx.Panel):
 
         self.prijedlogText = wx.TextCtrl(self.slika, -1, "", size=(380, 200), pos=(45, 100), style=wx.TE_MULTILINE)
 
-        profLabel = wx.TextCtrl(self.slika, -1, "", pos=(110, 70))
+        self.profLabel = wx.TextCtrl(self.slika, -1, "", pos=(110, 70))
+
+        for e in login_lista:
+            self.profLabel.SetValue(e[0][0])
 
         button = wx.Button(self.slika, label=u"Pošalji", pos=(430, 100), size=(80, 40))
         self.Bind(wx.EVT_BUTTON, self.send_mail, button)
@@ -1022,7 +1028,6 @@ class izmjst_frame(wx.Frame):
         self.GetParent().grd.PuniPodatkeStudenti()
 
     def odustani(self, event):
-        del unos_lista[:]
         self.Close(True)
 
 
